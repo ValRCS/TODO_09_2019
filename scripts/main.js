@@ -57,11 +57,19 @@ function addTodo(parent, value) {
     const chkBox = newTodo.querySelector('[type="checkbox"]');
 
     chkBox.onclick = function(event) {
+
+        //const jDesc = event.target.nextElementSibling;
+        
+        // trickier alternative using id and splitting our id
+        const id = event.target.id.split("-")[2];
+        const descId = "#j-desc-"+id;
+        const jDesc = document.querySelector(descId);
+
         if (event.target.checked) {
             //console.log("nextSibling"+event.target.nextSibling.id);
-            event.target.nextElementSibling.style.textDecoration = "line-through";
+            jDesc.style.textDecoration = "line-through";
         } else {
-            event.target.nextElementSibling.style.textDecoration = "none";
+            jDesc.style.textDecoration = "none";
         }
 
     }
