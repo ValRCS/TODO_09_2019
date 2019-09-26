@@ -54,6 +54,17 @@ function addTodo(parent, value) {
         //such as .job-cont-myid
     }
   
+    const chkBox = newTodo.querySelector('[type="checkbox"]');
+
+    chkBox.onclick = function(event) {
+        if (event.target.checked) {
+            //console.log("nextSibling"+event.target.nextSibling.id);
+            event.target.nextElementSibling.style.textDecoration = "line-through";
+        } else {
+            event.target.nextElementSibling.style.textDecoration = "none";
+        }
+
+    }
     
     //TODO move updating to separate function
     app.jobId++;
