@@ -3,7 +3,8 @@ console.log("Started TODO app!");
 const app = {
     jobId : 0,
     mybtn : document.querySelector("#btn1"),
-    todoCont : document.querySelector("#todos-cont")
+    todoCont : document.querySelector("#todos-cont"),
+    getBtn : document.querySelector("#btn0")
 };
 main();
 
@@ -16,6 +17,13 @@ function main() {
 
         //Add New TODO 
         addTodo(app.todoCont, inputField.value);
+    }
+
+    app.getBtn.onclick = () => {
+        console.log("You pressed get Jobs Button!");
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+            .then(response => response.json())
+            .then(json => console.log(json))
     }
 }
 
