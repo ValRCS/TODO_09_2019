@@ -7,12 +7,8 @@ const app = {
 };
 main();
 
-
 function main() {
- 
-
-
-    //we create an event handler for add button
+     //we create an event handler for add button
     app.mybtn.onclick = (event) => {
         console.log("You pressed Add!");
         const inputField = document.querySelector("#myinput");
