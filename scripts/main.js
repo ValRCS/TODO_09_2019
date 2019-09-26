@@ -33,7 +33,12 @@ function addJobs(json) {
 
     console.log("Adding",json[0]);
 
-    addTodo(app.todoCont, json[0].title);
+
+    //create a loop to add first 20 jobs, can remove && i < 20 when done testing
+    for (let i=0; i < json.length && i < 20; i++) {
+        addTodo(app.todoCont, json[i].title);
+    }
+
 }
 
 
