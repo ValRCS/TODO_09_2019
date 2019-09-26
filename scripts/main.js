@@ -30,7 +30,9 @@ function addTodo(parent, value) {
         <span class="job-desc" id="j-desc-${app.jobId}"></span>
         <button class="del-btn" id="j-del-${app.jobId}">DELETE</button>
          `;  
-    //newTodo only has one span      
+    //newTodo only has one span  
+    
+    //value could be malicious so we only use innerText not innerHTML!!
     const jdesc = newTodo.querySelector("span");
     jdesc.innerText = value;
 
