@@ -1,13 +1,16 @@
 console.log("Started TODO app!");
+//app holds our global state
+const app = {
+    jobId : 0,
+    mybtn : document.querySelector("#btn1"),
+    todoCont : document.querySelector("#todos-cont")
+};
 main();
 
 
 function main() {
-    const app = {
-        lastId : 0,
-        mybtn : document.querySelector("#btn1"),
-        todoCont : document.querySelector("#todos-cont")
-    }
+ 
+
 
     //we create an event handler for add button
     app.mybtn.onclick = (event) => {
@@ -24,13 +27,22 @@ function main() {
 function addTodo(parent, value) {
     //Create New Todo
     const newTodo = document.createElement("div");
+    newTodo.classList.add("job-cont-"+app.jobId);
     newTodo.innerHTML = `
-        <input type="checkbox" name="" id="j-chk-1">
-        <span class="job-desc" id="j-desc-1">Buy Milk</span>
-        <button class="del-btn" id="j-del-1">DELETE</button>
-         `;   
+        <input type="checkbox" name="" id="j-chk-${app.jobId}">
+        <span class="job-desc" id="j-desc-${app.jobId}"></span>
+        <button class="del-btn" id="j-del-${app.jobId}">DELETE</button>
+         `;  
+    //newTodo only has one span      
+    const jdesc = newTodo.querySelector("span");
+    jdesc.innerText = value;
+
     parent.appendChild(newTodo);
 
+    
+    
+    //TODO move updating to separate function
+    app.jobId++;
 
     //add Handlers
     //TODO 
