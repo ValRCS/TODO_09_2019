@@ -28,6 +28,7 @@ function addTodo(parent, value) {
     //Create New Todo
     const newTodo = document.createElement("div");
     newTodo.classList.add("job-cont-"+app.jobId);
+    //using backticks for some string interpolation
     newTodo.innerHTML = `
         <input type="checkbox" name="" id="j-chk-${app.jobId}">
         <span class="job-desc" id="j-desc-${app.jobId}"></span>
@@ -39,7 +40,22 @@ function addTodo(parent, value) {
 
     parent.appendChild(newTodo);
 
-    
+    const delBtn = newTodo.querySelector(".del-btn");
+
+    delBtn.onclick = function(event) {
+        console.log("removing parent of element with id"+this.id);
+
+        //if we use arrow function this will not be available for button
+        //this.parentElement.remove();
+
+        //careful with event if possible bubbling
+        event.target.parentElement.remove();
+
+        //third way would be get id of the element 
+        // parse that id and use that id to get needed element
+        //such as .job-cont-myid
+    }
+  
     
     //TODO move updating to separate function
     app.jobId++;
