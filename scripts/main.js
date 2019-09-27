@@ -20,12 +20,29 @@ function main() {
         addTodo(app.todoCont, app.inputField.value);
     }
 
+    // app.inputField.onchange this will fire on any commitment 
+    //meaning click outside, enter key, click on button outside etc
+    //so we will use specific keyboard event
+
+    app.inputField.onkeyup = function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+          // Cancel the default action, if needed
+          console.log("You Pressed Enter");
+          event.preventDefault();
+          // Trigger the button element with a click
+          app.mybtn.click();
+        }
+      };
+
     app.getBtn.onclick = () => {
         console.log("You pressed get Jobs Button!");
         fetch(app.jobsUrl)
             .then(response => response.json())
             .then(json => addJobs(json))
     }
+
+
 }
 
 function addJobs(json) {
