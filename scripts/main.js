@@ -6,7 +6,11 @@ const app = {
     todoCont : document.querySelector("#todos-cont"),
     getBtn : document.querySelector("#btn0"),
     jobsUrl : "https://jsonplaceholder.typicode.com/todos",
-    inputField : document.querySelector("#myinput")
+    inputField : document.querySelector("#myinput"),
+    cfg : {
+        maxKeyDown : 5,
+    },
+    currKeyDown : 0
 };
 main();
 
@@ -27,6 +31,11 @@ function main() {
     app.inputField.onkeydown = function(event) {
         // Number 13 is the "Enter" key on the keyboard
         if (event.keyCode === 13) {
+
+          //limiting maximum times that onkeydown Enter will add element      
+          if (app.currKeyDown >= app.cfg.maxKeyDown) return;
+          
+          app.currKeyDown++;
           // Cancel the default action, if needed
           console.log("You Pressed Enter");
           event.preventDefault();
@@ -34,6 +43,15 @@ function main() {
           app.mybtn.click();
         }
       };
+
+    app.inputField.onkeyup = (event) => {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            console.log("Reseting keydown count");
+            app.currKeyDown = 0;
+        }
+    }
+
 
     app.getBtn.onclick = () => {
         console.log("You pressed get Jobs Button!");
