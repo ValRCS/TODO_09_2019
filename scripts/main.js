@@ -49,13 +49,13 @@ function addTodo(parent, value) {
     //using backticks for some string interpolation
     newTodo.innerHTML = `
         <input type="checkbox" name="" id="j-chk-${app.jobId}">
-        <span class="job-desc" id="j-desc-${app.jobId}"></span>
+        <label class="job-desc" id="j-desc-${app.jobId}"></label>
         <button class="del-btn" id="j-del-${app.jobId}">DELETE</button>
          `;  
-    //newTodo only has one span  
+    //newTodo only has one label
     
     //value could be malicious so we only use innerText not innerHTML!!
-    const jdesc = newTodo.querySelector("span");
+    const jdesc = newTodo.querySelector("label");
     jdesc.innerText = value;
 
     parent.appendChild(newTodo);
