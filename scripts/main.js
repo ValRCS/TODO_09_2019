@@ -5,7 +5,8 @@ const app = {
     mybtn : document.querySelector("#btn1"),
     todoCont : document.querySelector("#todos-cont"),
     getBtn : document.querySelector("#btn0"),
-    jobsUrl : "https://jsonplaceholder.typicode.com/todos"
+    jobsUrl : "https://jsonplaceholder.typicode.com/todos",
+    inputField : document.querySelector("#myinput")
 };
 main();
 
@@ -13,11 +14,10 @@ function main() {
      //we create an event handler for add button
     app.mybtn.onclick = (event) => {
         console.log("You pressed Add!");
-        const inputField = document.querySelector("#myinput");
-        console.log("Input value is: " + inputField.value);
+        console.log("Input value is: " + app.inputField.value);
 
         //Add New TODO 
-        addTodo(app.todoCont, inputField.value);
+        addTodo(app.todoCont, app.inputField.value);
     }
 
     app.getBtn.onclick = () => {
