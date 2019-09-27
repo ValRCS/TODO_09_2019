@@ -24,7 +24,7 @@ function main() {
     //meaning click outside, enter key, click on button outside etc
     //so we will use specific keyboard event
 
-    app.inputField.onkeyup = function(event) {
+    app.inputField.onkeydown = function(event) {
         // Number 13 is the "Enter" key on the keyboard
         if (event.keyCode === 13) {
           // Cancel the default action, if needed
