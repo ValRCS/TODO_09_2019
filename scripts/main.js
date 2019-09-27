@@ -7,6 +7,7 @@ const app = {
     getBtn : document.querySelector("#btn0"),
     jobsUrl : "https://jsonplaceholder.typicode.com/todos",
     inputField : document.querySelector("#myinput"),
+    clearCompletedBtn : document.querySelector("#btn-clear-completed"),
     cfg : {
         maxKeyDown : 5,
     },
@@ -60,6 +61,29 @@ function main() {
             .then(json => addJobs(json))
     }
 
+    app.clearCompletedBtn.onclick = () => {
+        console.log("Clicked Clear Completed!");
+
+        //loop through all jobs
+        //if job is marked as completed
+        // then we press delete button
+        const completedJobs = [];
+        //we loop through all children of main jobs container
+        // grab all completed jobs
+        //NOTE: we do not want to modify a live list by removing nodes
+        //instead we save nodes to be deleted later
+        for (let todo of app.todoCont.children) {
+            const chkBox = todo.querySelector('[type="checkbox"]');
+            if (chkBox.checked) {
+                completedJobs.push(todo);
+            }
+        }
+
+        //now we can safely delete done jobs
+        for (let doneJob of completedJobs) {
+            doneJob.remove();
+        }
+    }
 
 }
 
